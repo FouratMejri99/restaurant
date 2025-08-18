@@ -1,5 +1,5 @@
 import "./App.css";
-import bgVideo from "./assets/bg-video1.mp4"; // Your video file
+import bgVideo from "./assets/bg-video.mp4"; // Your video file
 import Navbar from "./components/Navbar/navbar"; // Import the Navbar component
 
 function App() {
