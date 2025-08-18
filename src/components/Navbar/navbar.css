@@ -1,0 +1,178 @@
+/* Import fancy Fraktur bold font */
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+
+/* Navbar Container */
+.navbar {
+  background-color: rgba(0, 0, 12, 0.4);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: background 0.3s;
+  font-family: "UnifrakturCook", cursive;
+  font-weight: 700;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 12, 0.8);
+}
+
+/* Inner container to control left/right margins */
+.navbar-container {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.navbar-left .logo {
+  color: white;
+  font-size: 1.8rem; /* bigger */
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  font-family: "UnifrakturCook", cursive;
+}
+
+/* Red dot in logo */
+.red-dot {
+  color: #fa0021;
+  font-size: 1.9rem;
+  margin-left: 0.05rem;
+}
+
+/* Center links */
+.navbar-center {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.navbar-center a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: "UnifrakturCook", cursive;
+  font-size: 1.2rem; /* larger */
+  transition: color 0.45s;
+}
+
+/* Underline hover animation */
+.navbar-center a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #fa0021;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s ease;
+}
+
+.navbar-center a:hover {
+  color: #fa0021;
+}
+
+.navbar-center a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Right side */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Buttons */
+.book-now {
+  background-color: #fa0021;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: background 0.3s;
+  color: white;
+  font-family: "UnifrakturCook", cursive; /* force fraktur */
+  font-size: 1.3rem; /* larger */
+}
+
+.book-now:hover {
+  background-color: #e70d0d;
+}
+
+/* Hamburger menu */
+.hamburger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+
+.hamburger:hover {
+  color: #fa0021;
+}
+
+/* Visibility for mobile/desktop */
+.desktop-only {
+  display: inline-block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-left .logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar-center {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 12, 0.9);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  .navbar-center.open {
+    display: flex;
+  }
+
+  .navbar-center a {
+    font-size: 1.2rem;
+  }
+
+  .book-now.mobile-only {
+    display: inline-block;
+  }
+
+  .book-now.desktop-only {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-block;
+    font-size: 1.5rem;
+  }
+}

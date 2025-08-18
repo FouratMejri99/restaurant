@@ -1,0 +1,117 @@
+.booking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.booking-modal.big-ui {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.top-inputs input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.selects-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.select-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.select-group select {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.other-dates {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.other-dates label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.other-dates select {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: #ff3b3f;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #e63237;
+}
