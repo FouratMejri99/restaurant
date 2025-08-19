@@ -10,20 +10,19 @@ function App() {
         <video className="background-video" src={bgVideo} autoPlay loop muted />
         <div className="video-overlay">
           <div className="hero-text">
+            {/* 👇 wrap the 'o' in a span */}
             <h1 className="animated-text">
-              Flavors Inspired by
-              <br />
-              the Seasons
+              Arigat<span className="red-letter">o</span>
             </h1>
             <p className="animated-subtext">
               Come with family & feel the joy of mouthwatering food
             </p>
-            <button className="hero-button">Explore Our Flavors</button>
+            <button className="btn">Explore Our Flavors</button>
           </div>
         </div>
       </div>
+
       <div className="content">
-        {/* Your main content here */}
         <p>This is the rest of your page content...</p>
       </div>
     </div>

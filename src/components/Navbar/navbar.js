@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="navbar-container">
           <div className="navbar-left">
             <div className="logo">
-              Arigat<span className="red-dot">●</span>
+              Arigat<span className="red-letter">o</span>
             </div>
           </div>
 
