@@ -8,7 +8,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 9999;
   transition: background 0.3s;
   font-family: "UnifrakturCook", cursive;
   font-weight: 700;
@@ -34,6 +34,7 @@
   font-size: 1.8rem; /* bigger */
   letter-spacing: 1px;
   display: flex;
+  text-transform: uppercase;
   align-items: center;
   font-family: "UnifrakturCook", cursive;
 }

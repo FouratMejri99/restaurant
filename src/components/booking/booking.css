@@ -115,3 +115,25 @@ h2 {
 .submit-btn:hover {
   background-color: #e63237;
 }
+/* Make date button look like your select dropdown */
+.custom-select-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.custom-select-btn:hover {
+  border-color: #888;
+}
+
+/* Optional: tweak calendar popup */
+.custom-calendar {
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  padding: 8px;
+}

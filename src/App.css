@@ -81,8 +81,9 @@
 /* 🔥 Animated subtext with smooth reveal */
 .animated-subtext {
   font-size: 1.5rem;
+  letter-spacing: 1px;
   margin-bottom: 2rem;
-  font-family: "Brush Script MT", cursive;
+  font-family: "Forum", cursive;
   position: relative;
   opacity: 0;
   transform: translateY(15px);
@@ -176,8 +177,10 @@
   padding: 10px 20px;
   font-size: 17px;
   cursor: pointer;
+  letter-spacing: 5px;
   font-weight: bold;
   background: transparent;
+  font-family: "Forum", cursive;
   position: relative;
   transition: all 1s;
   overflow: hidden;

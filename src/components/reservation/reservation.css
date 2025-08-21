@@ -1,0 +1,79 @@
+.reservation-form {
+  padding: 20px;
+  text-align: left;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #b22222; /* Restaurant red vibe */
+}
+
+.form-subtitle {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.reservation-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #b22222;
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-btn,
+.submit-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.back-btn {
+  margin-right: 10px;
+  background: #eee;
+  color: #333;
+}
+
+.back-btn:hover {
+  background: #ddd;
+}
+
+.submit-btn {
+  background: #b22222;
+  color: white;
+}
+
+.submit-btn:hover {
+  background: #8b1a1a;
+}

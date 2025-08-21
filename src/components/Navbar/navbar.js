@@ -26,7 +26,7 @@ const Navbar = () => {
           <div className={`navbar-center ${isMobileMenuOpen ? "open" : ""}`}>
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
-            <a href="#menus">Menus</a>
+            <a href="#menu">Menus</a>
             <button
               className="book-now mobile-only"
               onClick={() => setIsBookingOpen(true)}
