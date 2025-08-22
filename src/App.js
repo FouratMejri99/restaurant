@@ -1,7 +1,8 @@
 import "./App.css";
 import bgVideo from "./assets/bg-video.mp4";
 import Navbar from "./components/Navbar/navbar";
-
+import Menu from "./pages/menu";
+import Service from "./pages/service";
 function App() {
   return (
     <div className="App">
@@ -23,18 +24,14 @@ function App() {
         </div>
       </div>
 
-      {/* About Us Section */}
-
-      {/* Service Section 
       <section id="Service">
         <Service />
       </section>
 
-      
       <section id="menu">
         <Menu />
       </section>
-
+      {/* 
       <section id="footer">
         <Footer />
       </section>

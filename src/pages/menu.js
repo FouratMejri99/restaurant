@@ -1,4 +1,5 @@
 import "./pages.css";
+
 const menuItems = [
   {
     title: "Greek Salad",
