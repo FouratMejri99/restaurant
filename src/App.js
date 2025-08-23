@@ -20,7 +20,16 @@ function App() {
             <p className="animated-subtext">
               Come with family & feel the joy of mouthwatering food
             </p>
-            <button className="btn">Explore Our Menu</button>
+            <button
+              className="btn"
+              onClick={() => {
+                document
+                  .getElementById("menu")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Explore Our Menu
+            </button>
           </div>
         </div>
       </div>

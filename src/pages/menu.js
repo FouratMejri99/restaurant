@@ -1,6 +1,3 @@
-import "./pages.css";
-
-// Import images
 import menu1 from "../assets/images/menu-1.png";
 import menu2 from "../assets/images/menu-2.png";
 import menu3 from "../assets/images/menu-3.png";
@@ -9,6 +6,10 @@ import menu5 from "../assets/images/menu-5.png";
 import menu6 from "../assets/images/menu-6.png";
 import shape5 from "../assets/images/shape-5.png";
 import shape6 from "../assets/images/shape-6.png";
+import "./pages.css";
+
+// import the popup component
+import AllMenu from "../components/menu/Allmenu";
 
 const menuItems = [
   {
@@ -114,9 +115,8 @@ const Menu = () => {
           <span className="span">9:00 pm</span>
         </p>
 
-        <a href="/" className="btn btn-primary">
-          <span className="text text-1">View All Menu</span>
-        </a>
+        {/* Replace the button with AllMenu */}
+        <AllMenu menuItems={menuItems} />
 
         <img
           src={shape5}

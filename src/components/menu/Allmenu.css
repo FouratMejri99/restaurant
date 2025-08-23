@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Forum&display=swap");
+
+/* Overlay background */
+.allmenu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Popup box */
+.allmenu-popup {
+  background: #000;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  color: #fff;
+  font-family: "Forum", cursive;
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+  animation: slideUp 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Header */
+.allmenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ff0000;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+/* Title with red animation */
+.allmenu-title {
+  font-family: "UnifrakturCook", cursive;
+  font-size: 2rem;
+  color: #ff0000;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+  }
+  to {
+    text-shadow: 0 0 20px #ff3333, 0 0 40px #ff0000;
+  }
+}
+
+/* Close button */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s, color 0.2s;
+}
+.close-btn:hover {
+  transform: scale(1.2);
+  color: #ff0000;
+}
+
+/* List items */
+.allmenu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.allmenu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.allmenu-item:last-child {
+  border-bottom: none;
+}
+
+.allmenu-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ff0000;
+}
+
+.allmenu-info {
+  flex: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
