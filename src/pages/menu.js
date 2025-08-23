@@ -1,5 +1,15 @@
 import "./pages.css";
 
+// Import images
+import menu1 from "../assets/images/menu-1.png";
+import menu2 from "../assets/images/menu-2.png";
+import menu3 from "../assets/images/menu-3.png";
+import menu4 from "../assets/images/menu-4.png";
+import menu5 from "../assets/images/menu-5.png";
+import menu6 from "../assets/images/menu-6.png";
+import shape5 from "../assets/images/shape-5.png";
+import shape6 from "../assets/images/shape-6.png";
+
 const menuItems = [
   {
     title: "Greek Salad",
@@ -7,7 +17,7 @@ const menuItems = [
     badge: "Seasonal",
     description:
       "Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.",
-    img: "./assets/images/menu-1.png",
+    img: menu1,
     alt: "Greek Salad",
   },
   {
@@ -15,7 +25,7 @@ const menuItems = [
     price: "$40.00",
     description:
       "Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices",
-    img: "./assets/images/menu-2.png",
+    img: menu2,
     alt: "Lasagne",
   },
   {
@@ -23,7 +33,7 @@ const menuItems = [
     price: "$10.00",
     description:
       "Typesetting industry lorem Lorem Ipsum is simply dummy text of the priand.",
-    img: "./assets/images/menu-3.png",
+    img: menu3,
     alt: "Butternut Pumpkin",
   },
   {
@@ -32,7 +42,7 @@ const menuItems = [
     badge: "New",
     description:
       "Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices.",
-    img: "./assets/images/menu-4.png",
+    img: menu4,
     alt: "Tokusen Wagyu",
   },
   {
@@ -40,7 +50,7 @@ const menuItems = [
     price: "$25.00",
     description:
       "Avocados with crab meat, red onion, crab salad stuffed red bell pepper and green bell pepper.",
-    img: "./assets/images/menu-5.png",
+    img: menu5,
     alt: "Olivas Rellenas",
   },
   {
@@ -48,7 +58,7 @@ const menuItems = [
     price: "$49.00",
     description:
       "Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices",
-    img: "./assets/images/menu-6.png",
+    img: menu6,
     alt: "Opu Fish",
   },
 ];
@@ -112,7 +122,7 @@ const Menu = () => {
         </a>
 
         <img
-          src="./assets/images/shape-5.png"
+          src={shape5}
           width="921"
           height="1036"
           loading="lazy"
@@ -120,7 +130,7 @@ const Menu = () => {
           className="shape shape-2 move-anim"
         />
         <img
-          src="./assets/images/shape-6.png"
+          src={shape6}
           width="343"
           height="345"
           loading="lazy"
