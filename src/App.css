@@ -206,6 +206,9 @@
 .btn:hover::before {
   width: 160%;
 }
+
 .red-letter {
   color: red;
+  display: inline; /* keep it inline */
+  vertical-align: baseline; /* force same baseline */
 }

@@ -142,6 +142,40 @@ body.nav-active {
 ::-webkit-scrollbar-thumb {
   background-color: var(--gold-crayola);
 } /*-----------------------------------*\ #TYPOGRAPHY \*-----------------------------------*/
+
+.animated-subtext {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  font-family: "Forum", cursive;
+  position: relative;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 2.5s; /* after headline */
+  cursor: pointer;
+}
+
+/* underline for subtext */
+.animated-subtext::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: red;
+  transition: width 0.4s ease;
+}
+
+.animated-subtext:hover {
+  color: red;
+}
+
+.animated-subtext:hover::after {
+  width: 100%;
+}
+
 .display-1,
 .headline-1,
 .headline-2,
@@ -262,61 +296,35 @@ body.nav-active {
 }
 .btn {
   position: relative;
-  color: var(--gold-crayola);
+  color: silver; /* default text color */
   font-size: var(--fontSize-label-2);
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--letterSpacing-5);
   max-width: max-content;
-  border: 2px solid var(--gold-crayola);
+  border: 2px solid silver; /* default border */
   padding: 12px 45px;
   overflow: hidden;
   z-index: 1;
+  background-color: transparent; /* no fill by default */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .btn::before {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200%;
-  height: 200%;
-  border-radius: var(--radius-circle);
-  background-color: var(--gold-crayola);
-  transition: var(--transition-2);
-  z-index: -1;
+  display: none; /* not needed for this effect */
 }
+
 .btn .text {
   transition: var(--transition-1);
 }
-.btn .text-2 {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: max-content;
-  color: var(--smoky-black-1);
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: red; /* hover background */
+  border-color: red; /* border also turns red */
+  color: white; /* text turns white */
 }
-.btn:is(:hover, :focus-visible)::before {
-  bottom: -50%;
-}
-.btn:is(:hover, :focus-visible) .text-1 {
-  transform: translateY(-40px);
-}
-.btn:is(:hover, :focus-visible) .text-2 {
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.btn-secondary {
-  background-color: var(--gold-crayola);
-  color: var(--black);
-}
-.btn-secondary::before {
-  background-color: var(--smoky-black-1);
-}
-.btn-secondary .text-2 {
-  color: var(--white);
-}
+
 .has-before,
 .has-after {
   position: relative;

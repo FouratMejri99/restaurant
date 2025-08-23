@@ -7,10 +7,7 @@ import "./service.css";
 
 const Service = () => {
   return (
-    <section
-      className="section service bg-black-10 text-center"
-      aria-label="service"
-    >
+    <section className="section service  text-center" aria-label="service">
       <div className="container">
         <p className="section-subtitle label-2">Flavors For Royalty</p>
 

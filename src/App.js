@@ -1,6 +1,7 @@
 import "./App.css";
 import bgVideo from "./assets/bg-video.mp4";
 import Navbar from "./components/Navbar/navbar";
+import Footer from "./pages/footer";
 import Menu from "./pages/menu";
 import Service from "./pages/service";
 function App() {
@@ -31,11 +32,10 @@ function App() {
       <section id="menu">
         <Menu />
       </section>
-      {/* 
+
       <section id="footer">
         <Footer />
       </section>
-      */}
     </div>
   );
 }
