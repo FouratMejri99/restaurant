@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import "./reservation.css";
+
 const Reservations = ({
   selectedDate,
   selectedTime,
@@ -30,12 +31,6 @@ const Reservations = ({
       transition={{ type: "spring", stiffness: 80 }}
       className="reservation-form"
     >
-      <h2 className="form-title">Complete Your Reservation 🍽️</h2>
-      <p className="form-subtitle">
-        {selectedDate ? selectedDate.toDateString() : "No Date"} <br />
-        {selectedTime} · {selectedGuests} Guests
-      </p>
-
       <form onSubmit={handleSubmit} className="reservation-inputs">
         <div className="form-group">
           <label>Name</label>
@@ -45,6 +40,7 @@ const Reservations = ({
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className="form-input"
           />
         </div>
 
@@ -56,6 +52,7 @@ const Reservations = ({
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
+            className="form-input"
           />
         </div>
 
@@ -67,24 +64,36 @@ const Reservations = ({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="form-input"
           />
         </div>
 
-        {/* Future payment dropdown (placeholder for now) */}
         <div className="form-group">
           <label>Payment Method</label>
-          <select disabled>
+          <select className="form-input" disabled>
             <option>Coming Soon 💳</option>
           </select>
         </div>
 
         <div className="form-actions">
-          <button type="button" className="back-btn" onClick={onBack}>
+          <motion.button
+            type="button"
+            className="back-btn"
+            onClick={onBack}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             ⬅ Back
-          </button>
-          <button type="submit" className="submit-btn">
-            Confirm Reservation ✅
-          </button>
+          </motion.button>
+
+          <motion.button
+            type="submit"
+            className="submit-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Confirm ✅
+          </motion.button>
         </div>
       </form>
     </motion.div>

@@ -4,136 +4,95 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(15, 15, 15, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 200;
+  z-index: 50;
 }
 
-.booking-modal.big-ui {
-  background: #fff;
-  padding: 2.5rem;
-  border-radius: 15px;
-  width: 95%;
-  max-width: 600px;
+.booking-modal {
+  background: #111;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   position: relative;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  animation: slideDown 0.3s ease forwards;
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 
 .close-btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 12px;
+  right: 12px;
+  background: transparent;
   border: none;
-  background: none;
-  font-size: 1.5rem;
+  color: #aaa;
+  font-size: 1.3rem;
   cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #ff4b4b;
 }
 
-h2 {
+.restaurant-title {
+  font-family: "UnifrakturCook", cursive;
+  font-size: 1.8rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.3rem;
+  color: #e63946;
 }
 
-.top-inputs input {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+.restaurant-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 1.5rem;
 }
 
-.selects-row {
+.booking-form {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
-.select-group {
-  flex: 1;
+.form-group {
   display: flex;
   flex-direction: column;
 }
 
-.select-group label {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  font-size: 0.95rem;
+label {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
-.select-group select {
-  padding: 1rem;
-  font-size: 1rem;
+.form-input {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 0.6rem;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  color: #fff;
+  font-size: 0.9rem;
 }
 
-.other-dates {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-}
-
-.other-dates label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.other-dates select {
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+.form-input:focus {
+  border-color: #e63946;
+  outline: none;
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.1rem;
-  background-color: #ff3b3f;
-  color: #fff;
+  background: #e63946;
   border: none;
+  padding: 0.8rem;
   border-radius: 12px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.submit-btn:hover {
-  background-color: #e63237;
-}
-/* Make date button look like your select dropdown */
-.custom-select-btn {
-  width: 100%;
-  padding: 1rem;
   font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background-color: white;
+  font-weight: bold;
+  color: white;
   cursor: pointer;
-  text-align: left;
+  transition: background 0.3s;
 }
-
-.custom-select-btn:hover {
-  border-color: #888;
-}
-
-/* Optional: tweak calendar popup */
-.custom-calendar {
-  font-family: Arial, sans-serif;
-  border-radius: 8px;
-  padding: 8px;
+.submit-btn:hover {
+  background: #d62828;
 }

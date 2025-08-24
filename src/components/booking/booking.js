@@ -29,7 +29,13 @@ const Booking = ({ onClose }) => {
 
   return (
     <div className="booking-overlay">
-      <div className="booking-modal big-ui">
+      <motion.div
+        className="booking-modal"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <button className="close-btn" onClick={onClose}>
           ✖
         </button>
@@ -38,71 +44,73 @@ const Booking = ({ onClose }) => {
           {step === "booking" && (
             <motion.div
               key="booking"
-              initial={{ x: 0, opacity: 1 }}
-              exit={{ x: -200, opacity: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.4 }}
               className="restaurant-form"
             >
-              <h2 className="restaurant-title">🍽️ Arigato Dining</h2>
+              <h2 className="restaurant-title">🍷 Reserve Your Table</h2>
+              <p className="restaurant-subtitle">
+                Select your date, time, and number of guests
+              </p>
 
-              <form onSubmit={handleSubmit}>
-                <div className="selects-row">
-                  {/* Time */}
-                  <div className="select-group">
-                    <label>Time</label>
-                    <select
-                      value={selectedTime}
-                      onChange={(e) => setSelectedTime(e.target.value)}
-                      required
-                    >
-                      <option value="">Select Time</option>
-                      {times.map((time) => (
-                        <option key={time} value={time}>
-                          {time}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Guests */}
-                  <div className="select-group">
-                    <label>Guests</label>
-                    <select
-                      value={selectedGuests}
-                      onChange={(e) => setSelectedGuests(e.target.value)}
-                      required
-                    >
-                      <option value="">Select Guests</option>
-                      {guests.map((g) => (
-                        <option key={g} value={g}>
-                          {g}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Date */}
-                  <div className="select-group">
-                    <label>Date</label>
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={(date) => setSelectedDate(date)}
-                      placeholderText="Pick a Date"
-                      customInput={
-                        <button type="button" className="custom-select-btn">
-                          {selectedDate
-                            ? selectedDate.toDateString()
-                            : "Pick a Date"}
-                        </button>
-                      }
-                      calendarClassName="custom-calendar"
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="booking-form">
+                {/* Date */}
+                <div className="form-group">
+                  <label>Date</label>
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                    placeholderText="Pick a Date"
+                    className="form-input"
+                  />
                 </div>
 
-                <button type="submit" className="submit-btn restaurant-btn">
-                  Reserve Table
-                </button>
+                {/* Time */}
+                <div className="form-group">
+                  <label>Time</label>
+                  <select
+                    className="form-input"
+                    value={selectedTime}
+                    onChange={(e) => setSelectedTime(e.target.value)}
+                    required
+                  >
+                    <option value="">Select Time</option>
+                    {times.map((time) => (
+                      <option key={time} value={time}>
+                        {time}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Guests */}
+                <div className="form-group">
+                  <label>Guests</label>
+                  <select
+                    className="form-input"
+                    value={selectedGuests}
+                    onChange={(e) => setSelectedGuests(e.target.value)}
+                    required
+                  >
+                    <option value="">Select Guests</option>
+                    {guests.map((g) => (
+                      <option key={g} value={g}>
+                        {g}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="submit-btn"
+                >
+                  Reserve Now
+                </motion.button>
               </form>
             </motion.div>
           )}
@@ -112,7 +120,7 @@ const Booking = ({ onClose }) => {
               key="reservations"
               initial={{ x: 200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 200, opacity: 0 }}
+              exit={{ x: -200, opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
               <Reservations
@@ -125,7 +133,7 @@ const Booking = ({ onClose }) => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 };
