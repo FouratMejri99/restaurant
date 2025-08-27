@@ -2,6 +2,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Slider from "react-slick"; // Added
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import restau1 from "../../assets/restaurant.png";
+import restau2 from "../../assets/restaurant2.png";
+import restau3 from "../../assets/restaurant3.png";
+import restau4 from "../../assets/restaurant4.png";
 import Reservations from "../reservation/reservation";
 import "./booking.css";
 
@@ -16,6 +23,8 @@ const times = [
 ];
 const guests = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+const images = [restau1, restau2, restau3, restau4];
+
 const Booking = ({ onClose }) => {
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedGuests, setSelectedGuests] = useState("");
@@ -27,10 +36,20 @@ const Booking = ({ onClose }) => {
     setStep("reservations");
   };
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+  };
+
   return (
     <div className="booking-overlay">
       <motion.div
-        className="booking-modal"
+        className="booking-modal fullpage-modal"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
@@ -48,14 +67,33 @@ const Booking = ({ onClose }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.4 }}
-              className="restaurant-form"
+              className="restaurant-form fullpage-form"
             >
               <h2 className="restaurant-title">🍷 Reserve Your Table</h2>
               <p className="restaurant-subtitle">
                 Select your date, time, and number of guests
               </p>
 
-              <form onSubmit={handleSubmit} className="booking-form">
+              {/* Image Slider */}
+              <div className="booking-hero">
+                <Slider {...sliderSettings}>
+                  {images.map((img, idx) => (
+                    <div key={idx}>
+                      <img
+                        src={img}
+                        alt={`Restaurant ${idx + 1}`}
+                        className="hero-image"
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+
+              {/* Form */}
+              <form
+                onSubmit={handleSubmit}
+                className="booking-form scrollable-form"
+              >
                 {/* Date */}
                 <div className="form-group">
                   <label>Date</label>
@@ -63,7 +101,7 @@ const Booking = ({ onClose }) => {
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
                     placeholderText="Pick a Date"
-                    className="form-input"
+                    className="form-input small-input"
                   />
                 </div>
 
@@ -71,7 +109,7 @@ const Booking = ({ onClose }) => {
                 <div className="form-group">
                   <label>Time</label>
                   <select
-                    className="form-input"
+                    className="form-input small-input"
                     value={selectedTime}
                     onChange={(e) => setSelectedTime(e.target.value)}
                     required
@@ -89,7 +127,7 @@ const Booking = ({ onClose }) => {
                 <div className="form-group">
                   <label>Guests</label>
                   <select
-                    className="form-input"
+                    className="form-input small-input"
                     value={selectedGuests}
                     onChange={(e) => setSelectedGuests(e.target.value)}
                     required
@@ -107,7 +145,7 @@ const Booking = ({ onClose }) => {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="submit-btn"
+                  className="submit-btn small-btn"
                 >
                   Reserve Now
                 </motion.button>
