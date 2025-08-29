@@ -1,15 +1,14 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Slider from "react-slick"; // Added
+import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import restau1 from "../../assets/restaurant.png";
 import restau2 from "../../assets/restaurant2.png";
 import restau3 from "../../assets/restaurant3.png";
 import restau4 from "../../assets/restaurant4.png";
-import Reservations from "../reservation/reservation";
 import "./booking.css";
 
 const times = [
@@ -22,18 +21,35 @@ const times = [
   "7:00 PM",
 ];
 const guests = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 const images = [restau1, restau2, restau3, restau4];
 
-const Booking = ({ onClose }) => {
+const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedGuests, setSelectedGuests] = useState("");
+  const [selectedName, setSelectedName] = useState("");
+  const [selectedNumber, setSelectedNumber] = useState("");
+  const [selectedEmail, setSelectedEmail] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-  const [step, setStep] = useState("booking");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStep("reservations");
+    if (
+      selectedName &&
+      selectedEmail &&
+      selectedNumber &&
+      selectedDate &&
+      selectedTime &&
+      selectedGuests
+    ) {
+      // Close booking modal
+      onClose();
+      // Show congrats popup
+      setShowCongrats(true);
+      // Optional: hide after 3 seconds
+      setTimeout(() => setShowCongrats(false), 3000);
+    } else {
+      alert("Please fill in all fields correctly!");
+    }
   };
 
   const sliderSettings = {
@@ -59,118 +75,128 @@ const Booking = ({ onClose }) => {
           ✖
         </button>
 
-        <AnimatePresence mode="wait">
-          {step === "booking" && (
-            <motion.div
-              key="booking"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.4 }}
-              className="restaurant-form fullpage-form"
-            >
-              <h2 className="restaurant-title">🍷 Reserve Your Table</h2>
-              <p className="restaurant-subtitle">
-                Select your date, time, and number of guests
-              </p>
+        <motion.div
+          className="restaurant-form fullpage-form"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <h2 className="restaurant-title">🍷 Reserve Your Table</h2>
+          <p className="restaurant-subtitle">
+            Select your date, time, and number of guests
+          </p>
 
-              {/* Image Slider */}
-              <div className="booking-hero">
-                <Slider {...sliderSettings}>
-                  {images.map((img, idx) => (
-                    <div key={idx}>
-                      <img
-                        src={img}
-                        alt={`Restaurant ${idx + 1}`}
-                        className="hero-image"
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-
-              {/* Form */}
-              <form
-                onSubmit={handleSubmit}
-                className="booking-form scrollable-form"
-              >
-                {/* Date */}
-                <div className="form-group">
-                  <label>Date</label>
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    placeholderText="Pick a Date"
-                    className="form-input small-input"
+          {/* Image Slider */}
+          <div className="booking-hero">
+            <Slider {...sliderSettings}>
+              {images.map((img, idx) => (
+                <div key={idx}>
+                  <img
+                    src={img}
+                    alt={`Restaurant ${idx + 1}`}
+                    className="hero-image"
                   />
                 </div>
+              ))}
+            </Slider>
+          </div>
 
-                {/* Time */}
-                <div className="form-group">
-                  <label>Time</label>
-                  <select
-                    className="form-input small-input"
-                    value={selectedTime}
-                    onChange={(e) => setSelectedTime(e.target.value)}
-                    required
-                  >
-                    <option value="">Select Time</option>
-                    {times.map((time) => (
-                      <option key={time} value={time}>
-                        {time}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Guests */}
-                <div className="form-group">
-                  <label>Guests</label>
-                  <select
-                    className="form-input small-input"
-                    value={selectedGuests}
-                    onChange={(e) => setSelectedGuests(e.target.value)}
-                    required
-                  >
-                    <option value="">Select Guests</option>
-                    {guests.map((g) => (
-                      <option key={g} value={g}>
-                        {g}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="submit-btn small-btn"
-                >
-                  Reserve Now
-                </motion.button>
-              </form>
-            </motion.div>
-          )}
-
-          {step === "reservations" && (
-            <motion.div
-              key="reservations"
-              initial={{ x: 200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -200, opacity: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Reservations
-                selectedDate={selectedDate}
-                selectedTime={selectedTime}
-                selectedGuests={selectedGuests}
-                onClose={onClose}
-                onBack={() => setStep("booking")}
+          {/* Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="booking-form scrollable-form"
+          >
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                value={selectedName}
+                onChange={(e) => setSelectedName(e.target.value)}
+                placeholder="Your Name"
+                className="form-input small-input"
+                required
               />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                value={selectedEmail}
+                onChange={(e) => setSelectedEmail(e.target.value)}
+                placeholder="Your Email"
+                className="form-input small-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Phone Number</label>
+              <input
+                type="tel"
+                value={selectedNumber}
+                onChange={(e) => setSelectedNumber(e.target.value)}
+                placeholder="Your Phone"
+                className="form-input small-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Date</label>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                placeholderText="Pick a Date"
+                className="form-input small-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Time</label>
+              <select
+                className="form-input small-input"
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(e.target.value)}
+                required
+              >
+                <option value="">Select Time</option>
+                {times.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Guests</label>
+              <select
+                className="form-input small-input"
+                value={selectedGuests}
+                onChange={(e) => setSelectedGuests(e.target.value)}
+                required
+              >
+                <option value="">Select Guests</option>
+                {guests.map((g) => (
+                  <option key={g} value={g}>
+                    {g}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="submit-btn small-btn"
+            >
+              Reserve Table Now
+            </motion.button>
+          </form>
+        </motion.div>
       </motion.div>
     </div>
   );
