@@ -41,6 +41,13 @@
   padding-bottom: 10px;
 }
 
+.allmenu-header-row {
+  display: flex;
+  justify-content: space-between; /* name left, price right */
+  align-items: center;
+  margin-bottom: 5px; /* optional spacing */
+}
+
 /* Title with red animation */
 .allmenu-title {
   font-family: "UnifrakturCook", cursive;

@@ -99,7 +99,7 @@
 .form-input {
   background: #1a1a1a;
   border: 1px solid #333;
-  padding: 0.7rem; /* smaller padding */
+  padding: 0.5rem; /* smaller padding */
   border-radius: 12px;
   color: #fff;
   font-size: 0.95rem; /* slightly smaller text */

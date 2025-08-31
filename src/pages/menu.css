@@ -533,6 +533,23 @@ body.nav-active {
 .menu-card .card-title {
   transition: var(--transition-1);
 }
+
+.menu-card .title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* space between name, line, price */
+  position: relative;
+}
+
+.menu-card .title-wrapper::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px; /* thickness of the line */
+  background-color: var(--quick-silver); /* line color */
+  margin: 5px 0; /* space around the line */
+}
+
 .menu-card .card-title:is(:hover, :focus-visible) {
   color: var(--gold-crayola);
 }

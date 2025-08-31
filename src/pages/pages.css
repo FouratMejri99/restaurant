@@ -614,9 +614,20 @@ body.nav-active {
   transform: scale(1.05);
 }
 .menu-card .card-banner {
-  flex-shrink: 0;
+  width: 100px; /* fixed width */
+  height: 100px; /* fixed height */
+  overflow: hidden; /* hide excess image */
   border-radius: var(--radius-24);
+  flex-shrink: 0; /* keep size when layout flexes */
 }
+.menu-card .card-banner .img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill container but keep aspect ratio */
+  display: block;
+  transition: var(--transition-2);
+}
+
 .menu-card .card-title {
   transition: var(--transition-1);
 }

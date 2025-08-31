@@ -1,3 +1,4 @@
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -9,6 +10,7 @@ import restau1 from "../../assets/restaurant.png";
 import restau2 from "../../assets/restaurant2.png";
 import restau3 from "../../assets/restaurant3.png";
 import restau4 from "../../assets/restaurant4.png";
+import { db } from "../../firebase"; // 👈 Import Firestore
 import "./booking.css";
 
 const times = [
@@ -31,8 +33,9 @@ const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
   const [selectedEmail, setSelectedEmail] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (
       selectedName &&
       selectedEmail &&
@@ -41,12 +44,28 @@ const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
       selectedTime &&
       selectedGuests
     ) {
-      // Close booking modal
-      onClose();
-      // Show congrats popup
-      setShowCongrats(true);
-      // Optional: hide after 3 seconds
-      setTimeout(() => setShowCongrats(false), 3000);
+      try {
+        // Save booking to Firestore
+        await addDoc(collection(db, "bookings"), {
+          name: selectedName,
+          email: selectedEmail,
+          phone: selectedNumber,
+          date: Timestamp.fromDate(selectedDate), // Firestore Timestamp
+          time: selectedTime,
+          guests: selectedGuests,
+          createdAt: Timestamp.now(),
+        });
+
+        // Close booking modal
+        onClose();
+        setShowCongrats(true);
+
+        // Hide after 3 seconds
+        setTimeout(() => setShowCongrats(false), 3000);
+      } catch (error) {
+        console.error("Error saving booking: ", error);
+        alert("Failed to save booking. Try again.");
+      }
     } else {
       alert("Please fill in all fields correctly!");
     }

@@ -11,11 +11,15 @@ const Service = () => {
       <div className="container">
         <p className="section-subtitle label-2">Flavors For Royalty</p>
 
-        <h2 className="headline-1 section-title">We Offer Top Notch</h2>
+        <h2 className="headline-1 section-title">
+          We Offer Top-Notch Japanese Cuisine
+        </h2>
 
         <p className="section-text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry lorem Ipsum has been the industry's standard dummy text ever.
+          Experience the authentic flavors of Japan, from fresh sushi and
+          sashimi to savory ramen and tempura. Every dish is crafted with
+          high-quality ingredients and traditional techniques to deliver a true
+          taste of Japan.
         </p>
 
         <ul className="grid-list">
