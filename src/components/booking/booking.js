@@ -1,7 +1,6 @@
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,13 +24,12 @@ const times = [
 const guests = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const images = [restau1, restau2, restau3, restau4];
 
-const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
+const Booking = ({ onClose }) => {
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedGuests, setSelectedGuests] = useState("");
   const [selectedName, setSelectedName] = useState("");
   const [selectedNumber, setSelectedNumber] = useState("");
   const [selectedEmail, setSelectedEmail] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +38,6 @@ const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
       selectedName &&
       selectedEmail &&
       selectedNumber &&
-      selectedDate &&
       selectedTime &&
       selectedGuests
     ) {
@@ -50,7 +47,7 @@ const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
           name: selectedName,
           email: selectedEmail,
           phone: selectedNumber,
-          date: Timestamp.fromDate(selectedDate), // Firestore Timestamp
+
           time: selectedTime,
           guests: selectedGuests,
           createdAt: Timestamp.now(),
@@ -58,10 +55,6 @@ const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
 
         // Close booking modal
         onClose();
-        setShowCongrats(true);
-
-        // Hide after 3 seconds
-        setTimeout(() => setShowCongrats(false), 3000);
       } catch (error) {
         console.error("Error saving booking: ", error);
         alert("Failed to save booking. Try again.");
@@ -156,17 +149,6 @@ const Booking = ({ onClose, showCongrats, setShowCongrats }) => {
                 value={selectedNumber}
                 onChange={(e) => setSelectedNumber(e.target.value)}
                 placeholder="Your Phone"
-                className="form-input small-input"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Date</label>
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                placeholderText="Pick a Date"
                 className="form-input small-input"
                 required
               />

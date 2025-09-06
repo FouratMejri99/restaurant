@@ -1,0 +1,58 @@
+.story-page {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.story-title {
+  font-family: "UnifrakturCook", cursive;
+  color: #c0392b;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.history-item.left {
+  flex-direction: row;
+}
+
+.history-item.right {
+  flex-direction: row-reverse;
+}
+
+.history-image img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.history-content {
+  max-width: 600px;
+}
+
+.history-content h3 {
+  color: #c0392b;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.history-content p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}

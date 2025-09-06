@@ -1,0 +1,122 @@
+/* Fullscreen overlay popup */
+.slider-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff; /* white full screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  overflow-y: auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 3rem;
+}
+
+/* Close button at top center */
+.close-btn-center {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #c0392b;
+}
+
+/* Content displayed after clicking a column */
+.slider-page-content {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-page-item {
+  font-family: "UnifrakturCook", cursive;
+  font-size: 1.5rem;
+  margin: 0.8rem 0;
+  color: #333;
+  transition: color 0.2s, transform 0.2s;
+  cursor: default;
+}
+
+.slider-page-item:hover {
+  color: #c0392b;
+  transform: translateX(5px);
+}
+
+/* Columns container */
+.slider-columns-fullscreen {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+/* Column */
+.slider-col {
+  flex: 1;
+  min-width: 220px;
+  padding: 0 1rem;
+  border-right: 2px solid #ddd;
+}
+
+.slider-col:last-child {
+  border-right: none;
+}
+
+/* Column title centered */
+.col-title {
+  font-size: 2rem;
+  font-family: "UnifrakturCook", cursive;
+  margin-bottom: 2rem;
+  color: #c0392b;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* List */
+.slider-col ul {
+  list-style: none;
+  padding: 0;
+  font-family: bold, cursive;
+  margin: 0;
+}
+
+.slider-col li {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.slider-col a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.slider-col a:hover {
+  color: #c0392b;
+  transform: translateX(5px);
+}
+.back-btn {
+  margin-top: 2rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: #e63946;
+}

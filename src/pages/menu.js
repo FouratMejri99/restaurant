@@ -43,7 +43,7 @@ const Menu = () => {
         <h2 className="headline-1 section-title text-center">Delicious Menu</h2>
 
         <ul className="grid-list">
-          {menuItems.map((item) => (
+          {menuItems.slice(0, 6).map((item) => (
             <li key={item.id}>
               <div className="menu-card hover:card">
                 <figure className="card-banner img-holder">

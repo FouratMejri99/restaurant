@@ -12,6 +12,19 @@
   z-index: 999;
   overflow-y: auto;
 }
+.congrats-alert {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4caf50; /* green success */
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 9999;
+}
 
 .fullpage-modal {
   width: 100%;

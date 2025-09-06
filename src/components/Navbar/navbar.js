@@ -1,13 +1,12 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Booking from "../booking/booking"; // import the component
+import Booking from "../booking/booking";
+import Slider from "../slider/slider";
 import "./navbar.css";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false); // booking modal
-  const [showCongrats, setShowCongrats] = useState(false); // congrats popup
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isSliderOpen, setIsSliderOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0);
@@ -25,7 +24,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className={`navbar-center ${isMobileMenuOpen ? "open" : ""}`}>
+          <div className="navbar-center">
             <a href="#home">Home</a>
             <a href="#Service">About Us</a>
             <a href="#menu">Menus</a>
@@ -44,10 +43,7 @@ const Navbar = () => {
             >
               Book Now
             </button>
-            <button
-              className="hamburger"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
+            <button className="hamburger" onClick={() => setIsSliderOpen(true)}>
               &#9776;
             </button>
           </div>
@@ -55,33 +51,10 @@ const Navbar = () => {
       </nav>
 
       {/* Booking Modal */}
-      {isBookingOpen && (
-        <Booking
-          onClose={() => setIsBookingOpen(false)}
-          showCongrats={showCongrats}
-          setShowCongrats={setShowCongrats}
-        />
-      )}
+      {isBookingOpen && <Booking onClose={() => setIsBookingOpen(false)} />}
 
-      {/* Global Congrats Popup */}
-      <AnimatePresence>
-        {showCongrats && (
-          <motion.div
-            className="global-congrats-popup"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-          >
-            <svg viewBox="0 0 24 24">
-              <path d="M20.285 6.708l-11.025 11.025-5.545-5.546 1.414-1.414 4.131 4.131 9.611-9.611z" />
-            </svg>
-            <p>
-              🎉 Congrats! Your booking is confirmed. We will contact you soon.
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Slider Modal */}
+      {isSliderOpen && <Slider onClose={() => setIsSliderOpen(false)} />}
     </>
   );
 };
