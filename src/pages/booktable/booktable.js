@@ -1,6 +1,7 @@
-// BookTable.js
+import { addDoc, collection } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { db } from "../../firebase"; // Adjust the path
 import "./booktable.css";
 
 const BookTable = () => {
@@ -17,19 +18,23 @@ const BookTable = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Booking data:", formData);
-    // Here you can integrate Firebase or API to save booking
-    alert("Table booked successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      date: "",
-      time: "",
-      guests: "",
-    });
+    try {
+      await addDoc(collection(db, "bookings"), formData); // save to "bookings" collection
+      alert("Table booked successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
+        time: "",
+        guests: "",
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("Failed to book table. Please try again.");
+    }
   };
 
   return (

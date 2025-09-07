@@ -28,21 +28,25 @@ const Navbar = () => {
             <a href="#home">Home</a>
             <a href="#Service">About Us</a>
             <a href="#menu">Menus</a>
+            {/* Book Now button for mobile 
             <button
               className="book-now mobile-only"
               onClick={() => setIsBookingOpen(true)}
             >
               Book Now
             </button>
+            */}
           </div>
 
           <div className="navbar-right">
+            {/* Book Now button for desktop 
             <button
               className="book-now desktop-only"
               onClick={() => setIsBookingOpen(true)}
             >
               Book Now
             </button>
+            */}
             <button className="hamburger" onClick={() => setIsSliderOpen(true)}>
               &#9776;
             </button>

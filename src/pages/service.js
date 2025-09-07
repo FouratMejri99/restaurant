@@ -101,7 +101,7 @@ const Service = () => {
                 <h3 className="title-4 card-title">
                   <a href="/">Drinks</a>
                 </h3>
-                <a href="/" className="btn-text hover-underline label-2">
+                <a href="#menu" className="btn-text hover-underline label-2">
                   View Menu
                 </a>
               </div>
