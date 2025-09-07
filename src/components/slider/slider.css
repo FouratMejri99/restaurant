@@ -108,12 +108,13 @@
   transform: translateX(5px);
 }
 .back-btn {
-  margin-top: 2rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 12px;
-  background: #c0392b;
-  color: #fff;
-  font-size: 1rem;
+  position: relative; /* or absolute with a proper parent */
+  z-index: 9999;
+  display: inline-block;
+  margin: 20px;
+  padding: 10px 20px;
+  background: black;
+  color: white;
   border: none;
   cursor: pointer;
 }
