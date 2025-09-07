@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import shape5 from "../assets/images/shape-5.png";
 import shape6 from "../assets/images/shape-6.png";
 import { db } from "../firebase";
+import "./menu.css";
 import "./pages.css";
 
 // import the popup component

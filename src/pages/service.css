@@ -107,3 +107,28 @@
 .service .card-title {
   margin-block-end: 12px;
 }
+.service .grid-list {
+  gap: 150px;
+}
+.service .grid-list li:nth-child(2n + 1) {
+  transform: translateY(-160px);
+}
+.service .section-text {
+  margin-block-end: 75px;
+}
+.service .container {
+  max-width: 420px;
+  margin-inline: auto;
+} /** * ABOUT */
+.about .container {
+  gap: 80px;
+}
+.about-banner > .w-100 {
+  padding-inline-start: 90px;
+}
+.about .abs-img-1 {
+  width: 285px;
+}
+.about .contact-number {
+  --fontSize-body-1: 2.4rem;
+}

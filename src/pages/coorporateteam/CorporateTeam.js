@@ -1,7 +1,10 @@
 // CorporateTeam.js
 import { motion } from "framer-motion";
+import challenge from "../../assets/challenge.jpg";
+import cheff from "../../assets/cheff.jpg";
 import shape5 from "../../assets/images/shape-5.png";
 import shape6 from "../../assets/images/shape-6.png";
+import wine from "../../assets/wine.webp";
 import "./corporate.css";
 
 const CorporateTeam = ({ onClose }) => {
@@ -10,16 +13,19 @@ const CorporateTeam = ({ onClose }) => {
       title: "Cooking Challenge",
       description:
         "Teams compete to prepare the best dish under the guidance of our chefs. Fun, competitive, and delicious!",
+      image: challenge,
     },
     {
       title: "Wine & Dine Experience",
       description:
         "Learn wine pairing and fine dining etiquette with your team in a relaxed setting.",
+      image: wine,
     },
     {
       title: "Chef’s Masterclass",
       description:
         "A hands-on culinary workshop where teams learn new skills and enjoy the fruits of their labor.",
+      image: cheff,
     },
   ];
 

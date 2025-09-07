@@ -3,6 +3,7 @@ import { useState } from "react";
 import BookTable from "../../pages/booktable/booktable";
 import CorporateTeam from "../../pages/coorporateteam/CorporateTeam";
 import GiftExperience from "../../pages/gift/giftexperience";
+import Menu from "../../pages/menu";
 import OurStory from "../../pages/story/story";
 import "./slider.css";
 
@@ -44,7 +45,7 @@ const Slider = ({ onClose }) => {
                   <a onClick={() => setPage("booktable")}>BOOK A TABLE</a>
                 </li>
                 <li>
-                  <a href="menuslider">MENUS</a>
+                  <a onClick={() => setPage("menuslider")}>MENUS</a>
                 </li>
               </ul>
             </div>
@@ -144,6 +145,26 @@ const Slider = ({ onClose }) => {
             className="slider-page-content"
           >
             <CorporateTeam />
+            <motion.button
+              onClick={() => setPage("main")}
+              className="back-btn"
+              whileHover={{ scale: 1.1 }}
+            >
+              ← Back
+            </motion.button>
+          </motion.div>
+        )}
+
+        {page === "menuslider" && (
+          <motion.div
+            key="menuslider"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.4 }}
+            className="slider-page-content"
+          >
+            <Menu />
             <motion.button
               onClick={() => setPage("main")}
               className="back-btn"
