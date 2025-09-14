@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import Displayer from "../Displayer/Displayer";
 import "./booking.css";
-
 const Booking = ({ onClose }) => {
   return (
     <div className="booking-overlay">
+      <Displayer />
       <motion.div
         className="booking-modal"
         initial={{ opacity: 0 }}
