@@ -1,142 +1,43 @@
+/* Fullscreen white overlay */
 .booking-overlay {
   position: fixed;
-  top: 70px; /* height of navbar */
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - 70px);
-  background: rgba(15, 15, 15, 0.85);
+  height: 100%;
+  background-color: #fff;
+  z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 0;
-  z-index: 999;
-  overflow-y: auto;
-}
-.congrats-alert {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #4caf50; /* green success */
-  color: white;
-  padding: 12px 18px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  font-weight: 500;
-  z-index: 9999;
+  align-items: center;
 }
 
-.fullpage-modal {
-  width: 100%;
-  max-width: 1200px;
-  min-height: calc(100vh - 70px);
-  border-radius: 0; /* full page look */
-  padding: 0;
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  box-shadow: none;
-}
-
-.restaurant-title {
-  font-family: "UnifrakturCook", cursive;
-  font-size: 2.5rem;
-  text-align: center;
-  margin: 1.5rem 0 0.5rem;
-  color: #e63946;
-}
-
-.restaurant-subtitle {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #bbb;
-  margin-bottom: 1.5rem;
-}
-
-.booking-hero {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.booking-hero .hero-image {
+/* Modal container (full-screen) */
+.booking-modal {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-bottom: 2px solid #e63946;
 }
 
-/* Existing styles ... */
-
-.scrollable-form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 4rem;
-  gap: 2rem;
-  overflow-y: auto;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .booking-hero {
-    height: 250px; /* slightly smaller image */
-    margin-bottom: 1rem; /* reduce space below image */
-  }
-
-  .scrollable-form {
-    padding: 2rem; /* reduce form padding */
-    gap: 1rem; /* reduce space between inputs */
-  }
-
-  .form-input {
-    padding: 0.6rem; /* slightly smaller input padding */
-    font-size: 0.9rem;
-  }
-
-  .submit-btn {
-    padding: 0.8rem 1.2rem; /* slightly smaller button */
-    font-size: 0.95rem;
-    margin-top: 10px; /* slightly less top margin */
-  }
-}
-
-.form-group label {
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
-  color: #ccc;
-  font-weight: 500;
-}
-
-.form-input {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  padding: 0.5rem; /* smaller padding */
-  border-radius: 12px;
+/* Close button - main red color */
+.close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #e63946; /* bright red */
   color: #fff;
-  font-size: 0.95rem; /* slightly smaller text */
-}
-
-.form-input:focus {
-  border-color: #e63946;
-  box-shadow: 0 0 8px rgba(230, 57, 70, 0.6);
-  outline: none;
-}
-
-.submit-btn {
-  background: #e63946;
-  padding: 0.9rem 1.5rem; /* slightly smaller button */
-  border-radius: 14px;
-  font-size: 1rem; /* fixed from 70rem */
-  font-weight: bold;
-  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  margin-top: 15px; /* space from last input */
+  z-index: 10000;
+  transition: all 0.3s;
+  opacity: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.submit-btn:hover {
-  background: #d62828;
-  transform: translateY(-2px);
+.close-btn:hover {
+  background: #b81d2a; /* darker red on hover */
+  transform: scale(1.1);
 }

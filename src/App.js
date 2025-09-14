@@ -1,10 +1,31 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import bgVideo from "./assets/bg-video.mp4";
 import Navbar from "./components/Navbar/navbar";
-import Footer from "./pages/footer";
-import Menu from "./pages/menu";
-import Service from "./pages/service";
+import Footer from "./pages/footer/footer";
+import MidSection from "./pages/midsection/midsection";
+import Service from "./pages/service/service";
+
 function App() {
+  const [dateTime, setDateTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options = { weekday: "long", day: "numeric", month: "long" };
+      const formattedDate = now.toLocaleDateString("en-US", options);
+      const formattedTime = now.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      setDateTime(`${formattedDate} / ${formattedTime}`);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 60000); // update every minute
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="App">
       <Navbar />
@@ -24,12 +45,19 @@ function App() {
               className="btn"
               onClick={() => {
                 document
-                  .getElementById("menu")
+                  .getElementById("midsection")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               Explore Our Menu
             </button>
+          </div>
+
+          {/* ⬇️ Date, Time & Weather Info */}
+          <div className="hero-info">
+            <p>{dateTime}</p>
+            <p>9℃</p>
+            <p>Sunrise 5:38 am / Sunset 6:23 pm</p>
           </div>
         </div>
       </div>
@@ -38,8 +66,8 @@ function App() {
         <Service />
       </section>
 
-      <section id="menu">
-        <Menu />
+      <section id="midsection">
+        <MidSection />
       </section>
 
       <section id="footer">

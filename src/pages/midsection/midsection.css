@@ -1,0 +1,56 @@
+.mid-section {
+  width: 100%;
+  min-height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 60px; /* spacing before footer */
+}
+
+.mid-overlay {
+  background: rgba(0, 0, 0, 0.45); /* slightly darker overlay */
+  padding: 50px 30px;
+  text-align: center; /* centers all text and button */
+  border-radius: 20px;
+  color: #fff;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mid-overlay:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.mid-overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Centered outlined button */
+.mid-btn {
+  display: inline-block; /* ensures button is treated as an inline element */
+  margin: 0 auto; /* horizontally centers the button */
+  background: transparent; /* outlined button */
+  color: white;
+  border: 2px solid white;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px; /* fully rounded */
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mid-btn:hover {
+  background: #e63946;
+  color: #fff;
+  border-color: #e63946;
+}
