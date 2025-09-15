@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import restaurant from "../../assets/restaurant.png";
 import Displayer from "../../components/Displayer/Displayer";
 import Planning from "../../components/Planing/planing";
 import "./booking.css";
@@ -16,7 +17,13 @@ const Booking = ({ onClose }) => {
         <button className="close-btn" onClick={onClose}>
           ✖
         </button>
+
+        <h2 className="booking-title">Book A Table</h2>
+
+        <img src={restaurant} alt="Booking" className="booking-image" />
+
         <Displayer />
+
         <Planning />
       </motion.div>
     </div>
