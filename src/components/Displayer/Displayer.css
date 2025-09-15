@@ -4,9 +4,13 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   padding: 20px;
   display: flex;
+  flex-direction: column; /* stack children vertically */
   justify-content: center;
-  width: fit-content;
   align-items: center;
+  width: 100%; /* take full available width */
+  max-width: 800px; /* optional max width */
+  box-sizing: border-box;
+  gap: 20px; /* space between input row and planning */
 }
 
 .displayer-row {
@@ -14,10 +18,10 @@
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  gap: 0; /* no gap between */
+  gap: 0;
+  width: 100%;
 }
 
-/* Make children equal height inside card */
 .displayer-row > * {
   flex: 1;
   margin: 0;
@@ -28,4 +32,11 @@
 /* Remove border from last child */
 .displayer-row > *:last-child {
   border-right: none;
+}
+
+/* Planning wrapper */
+.displayer-planning {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* center the Planning card */
 }

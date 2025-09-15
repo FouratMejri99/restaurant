@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import restaurant from "../../assets/restaurant.png";
 import Displayer from "../../components/Displayer/Displayer";
-import Planning from "../../components/Planing/planing";
+import MapCard from "../../components/MapCard/map";
+import BookTable from "../booktable/booktable";
 import "./booking.css";
 
 const Booking = ({ onClose }) => {
+  const [selectedTime, setSelectedTime] = useState(null); // store selected time
+
   return (
     <div className="booking-overlay">
       <motion.div
@@ -22,9 +26,13 @@ const Booking = ({ onClose }) => {
 
         <img src={restaurant} alt="Booking" className="booking-image" />
 
-        <Displayer />
+        <div className="booking-content-horizontal">
+          <Displayer setSelectedTime={setSelectedTime} />
+          <MapCard />
+        </div>
 
-        <Planning />
+        {/* Conditionally render BookATable inside the overlay */}
+        {selectedTime && <BookTable selectedTime={selectedTime} />}
       </motion.div>
     </div>
   );

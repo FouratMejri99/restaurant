@@ -4,16 +4,13 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import * as React from "react";
 
-export default function Times() {
-  const [time, setTime] = React.useState("");
-
+export default function Times({ time, setTime }) {
   const handleChange = (event) => {
     setTime(event.target.value);
   };
 
-  // Generate times (e.g. 9 AM to 9 PM)
+  // Generate times (e.g., 9 AM to 9 PM)
   const times = [];
   for (let hour = 9; hour <= 21; hour++) {
     const period = hour < 12 ? "AM" : "PM";
@@ -40,7 +37,7 @@ export default function Times() {
             </MenuItem>
           ))}
 
-          {/* Custom Button inside dropdown */}
+          {/* Optional custom button inside dropdown */}
           <MenuItem
             disableRipple
             disableGutters

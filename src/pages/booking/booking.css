@@ -52,7 +52,20 @@
 
 .booking-image {
   width: 90%;
-  max-width: 600px;
+  max-width: 900px;
   object-fit: cover;
-  border-radius: 15%;
+  border-radius: 2%;
+}
+.booking-content-horizontal {
+  display: flex;
+  flex-direction: row; /* side by side */
+  gap: 20px;
+  width: 100%;
+  justify-content: center; /* center the row in modal */
+  flex-wrap: wrap; /* stack on smaller screens */
+}
+
+.booking-content-horizontal > * {
+  flex: 1 1 400px; /* minimum width 400px but can grow */
+  max-width: 600px; /* optional max width for each side */
 }

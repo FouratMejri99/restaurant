@@ -3,17 +3,12 @@ import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
-import * as React from "react";
 
-export default function Dates() {
-  const [selectedDate, setSelectedDate] = React.useState(dayjs());
-
+export default function Dates({ date, setDate }) {
   return (
     <Box
       sx={{
         minWidth: 220,
-
         borderRadius: 2,
         backgroundColor: "white",
         display: "flex",
@@ -24,8 +19,8 @@ export default function Dates() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           label="Select date"
-          value={selectedDate}
-          onChange={(newValue) => setSelectedDate(newValue)}
+          value={date}
+          onChange={(newValue) => setDate(newValue)}
           renderInput={(params) => <TextField {...params} fullWidth />}
         />
       </LocalizationProvider>
