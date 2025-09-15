@@ -22,9 +22,7 @@ export default function Times() {
   }
 
   return (
-    <Box
-      sx={{ minWidth: 200, backgroundColor: "white", p: 2, borderRadius: 2 }}
-    >
+    <Box sx={{ minWidth: 200, backgroundColor: "white", borderRadius: 2 }}>
       <FormControl fullWidth>
         <InputLabel id="times-label">Select Time</InputLabel>
         <Select
@@ -32,24 +30,39 @@ export default function Times() {
           id="times-select"
           value={time}
           onChange={handleChange}
+          MenuProps={{
+            disablePortal: true, // 👈 Fix for modal rendering
+          }}
         >
           {times.map((t, index) => (
             <MenuItem key={index} value={t}>
               {t}
             </MenuItem>
           ))}
+
+          {/* Custom Button inside dropdown */}
+          <MenuItem
+            disableRipple
+            disableGutters
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              py: 1.5,
+              "&:hover": { backgroundColor: "transparent" },
+            }}
+          >
+            <Button
+              variant="contained"
+              color="error"
+              fullWidth
+              sx={{ borderRadius: 2 }}
+              onClick={() => alert(`Selected time: ${time || "None"}`)}
+            >
+              Display Times
+            </Button>
+          </MenuItem>
         </Select>
       </FormControl>
-
-      <Button
-        variant="contained"
-        color="error"
-        fullWidth
-        sx={{ mt: 2, borderRadius: 2 }}
-        onClick={() => alert(`Selected time: ${time || "None"}`)}
-      >
-        Display Times
-      </Button>
     </Box>
   );
 }

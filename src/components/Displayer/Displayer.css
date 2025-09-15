@@ -1,0 +1,31 @@
+.displayer-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  align-items: center;
+}
+
+.displayer-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0; /* no gap between */
+}
+
+/* Make children equal height inside card */
+.displayer-row > * {
+  flex: 1;
+  margin: 0;
+  border-right: 1px solid #e5e7eb;
+  padding: 0 10px;
+}
+
+/* Remove border from last child */
+.displayer-row > *:last-child {
+  border-right: none;
+}

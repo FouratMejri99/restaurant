@@ -1,3 +1,45 @@
+/* Container */
+.MuiFormControl-root {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 8px 12px;
+}
+
+/* Label */
 .input-text {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Select input */
+.MuiInputBase-root {
+  border-radius: 8px !important;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+/* Dropdown menu */
+.MuiPaper-root {
+  border-radius: 12px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Menu items */
+.MuiMenuItem-root {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  padding: 10px 16px;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.Mui-selected {
+  background-color: #2563eb !important;
+  color: white !important;
 }

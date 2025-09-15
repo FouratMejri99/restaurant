@@ -1,17 +1,34 @@
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import dayjs from "dayjs";
 import * as React from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 export default function Dates() {
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedDate, setSelectedDate] = React.useState(dayjs());
 
   return (
-    <div style={{ background: "white", padding: "16px", borderRadius: "8px" }}>
-      <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-        inline // inline = shows calendar directly (no input field)
-      />
-    </div>
+    <Box
+      sx={{
+        minWidth: 220,
+
+        borderRadius: 2,
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+      }}
+    >
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker
+          label="Select date"
+          value={selectedDate}
+          onChange={(newValue) => setSelectedDate(newValue)}
+          renderInput={(params) => <TextField {...params} fullWidth />}
+        />
+      </LocalizationProvider>
+    </Box>
   );
 }

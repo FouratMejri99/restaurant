@@ -1,0 +1,23 @@
+.times-card {
+  min-width: 200px;
+  background-color: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Optional: style the dropdown items */
+.MuiMenuItem-root {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Selected item styling */
+.Mui-selected {
+  background-color: #2563eb !important;
+  color: white !important;
+}

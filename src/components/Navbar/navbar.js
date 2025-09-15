@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Booking from "../booking/booking";
+import Booking from "../../pages/booking/booking";
 import Slider from "../slider/slider";
 import "./navbar.css";
 
