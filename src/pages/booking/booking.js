@@ -7,7 +7,10 @@ import BookTable from "../booktable/booktable";
 import "./booking.css";
 
 const Booking = ({ onClose }) => {
-  const [selectedTime, setSelectedTime] = useState(null); // store selected time
+  const [page, setPage] = useState("planning");
+  const [guests, setGuests] = useState("");
+  const [time, setTime] = useState("");
+  const [date, setDate] = useState(null);
 
   return (
     <div className="booking-overlay">
@@ -22,17 +25,33 @@ const Booking = ({ onClose }) => {
           ✖
         </button>
 
-        <h2 className="booking-title">Book A Table</h2>
+        {page === "planning" && (
+          <>
+            <h2 className="booking-title">Book A Table</h2>
+            <img src={restaurant} alt="Booking" className="booking-image" />
+            <div className="booking-content-horizontal">
+              <Displayer
+                guests={guests}
+                setGuests={setGuests}
+                time={time}
+                setTime={setTime}
+                date={date}
+                setDate={setDate}
+                setPage={setPage}
+              />
+              <MapCard />
+            </div>
+          </>
+        )}
 
-        <img src={restaurant} alt="Booking" className="booking-image" />
-
-        <div className="booking-content-horizontal">
-          <Displayer setSelectedTime={setSelectedTime} />
-          <MapCard />
-        </div>
-
-        {/* Conditionally render BookATable inside the overlay */}
-        {selectedTime && <BookTable selectedTime={selectedTime} />}
+        {page === "booktable" && (
+          <BookTable
+            time={time}
+            date={date}
+            guests={guests}
+            setPage={setPage}
+          />
+        )}
       </motion.div>
     </div>
   );

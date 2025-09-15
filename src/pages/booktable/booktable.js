@@ -4,14 +4,14 @@ import { useState } from "react";
 import { db } from "../../firebase"; // Adjust the path
 import "./booktable.css";
 
-const BookTable = () => {
+const BookTable = ({ time, date, guests, setPage }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    date: "",
-    time: "",
-    guests: "",
+    date: date || "",
+    time: time || "",
+    guests: guests || "",
   });
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ const BookTable = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, "bookings"), formData); // save to "bookings" collection
+      await addDoc(collection(db, "bookings"), formData);
       alert("Table booked successfully!");
       setFormData({
         name: "",
@@ -31,6 +31,7 @@ const BookTable = () => {
         time: "",
         guests: "",
       });
+      setPage("planning"); // go back after booking
     } catch (error) {
       console.error("Error adding document: ", error);
       alert("Failed to book table. Please try again.");
@@ -46,30 +47,11 @@ const BookTable = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container">
-        <motion.h2
-          className="headline-1 section-title text-center"
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.h2 className="headline-1 section-title text-center">
           Book a Table
         </motion.h2>
-        <motion.p
-          className="section-subtitle text-center label-2"
-          initial={{ y: -10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Reserve your spot in advance
-        </motion.p>
 
-        <motion.form
-          className="booking-form"
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        <motion.form className="booking-form" onSubmit={handleSubmit}>
           {[
             { label: "Name", name: "name", type: "text" },
             { label: "Email", name: "email", type: "email" },
@@ -78,13 +60,7 @@ const BookTable = () => {
             { label: "Time", name: "time", type: "time" },
             { label: "Guests", name: "guests", type: "number" },
           ].map((field, index) => (
-            <motion.div
-              className="form-group"
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-            >
+            <div className="form-group" key={index}>
               <label>{field.label}</label>
               <input
                 type={field.type}
@@ -94,17 +70,16 @@ const BookTable = () => {
                 className="form-input"
                 required
               />
-            </motion.div>
+            </div>
           ))}
 
-          <motion.button
-            type="submit"
-            className="btn-submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.button type="submit" className="btn-submit">
             Book Now
           </motion.button>
+
+          <button type="button" onClick={() => setPage("planning")}>
+            Back
+          </button>
         </motion.form>
       </div>
     </motion.section>

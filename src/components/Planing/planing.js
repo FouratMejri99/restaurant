@@ -1,12 +1,9 @@
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import { useNavigate } from "react-router-dom"; // import useNavigate
 import TimeButton from "./button/button";
 import "./planing.css";
 
-export default function Planning({ selectedTime }) {
-  const navigate = useNavigate(); // initialize navigate
-
+export default function Planning({ selectedTime, setSelectedTime, setPage }) {
   const totalButtons = 16; // 4x4 grid
   const interval = 15; // minutes between each button
   const defaultStart = 9 * 60; // 9:00 AM in minutes
@@ -87,7 +84,10 @@ export default function Planning({ selectedTime }) {
               <TimeButton
                 key={time}
                 time={time}
-                onClick={() => navigate("/booktable", { state: { time } })}
+                onClick={() => {
+                  setSelectedTime(time);
+                  setPage("booktable");
+                }}
               />
             ))}
           </Box>

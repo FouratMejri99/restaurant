@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import BookTable from "../../pages/booktable/booktable";
+import Booking from "../../pages/booking/booking";
 import CorporateTeam from "../../pages/coorporateteam/CorporateTeam";
 import GiftExperience from "../../pages/gift/giftexperience";
 import Menu from "../../pages/menu";
@@ -124,14 +124,7 @@ const Slider = ({ onClose }) => {
             transition={{ duration: 0.4 }}
             className="slider-page-content"
           >
-            <BookTable />
-            <motion.button
-              onClick={() => setPage("main")}
-              className="back-btn"
-              whileHover={{ scale: 1.1 }}
-            >
-              ← Back
-            </motion.button>
+            <Booking />
           </motion.div>
         )}
 
